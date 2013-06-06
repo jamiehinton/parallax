@@ -65,7 +65,9 @@
 
                 var range = container.width() - $(window).width();
 
-                console.log(range);
+                
+
+
 
                 $("html").mousemove(function(e){
                     var pageX = e.pageX - ($(window).width() / 2),
@@ -75,6 +77,12 @@
                         windowHeight = $(window).height(),
                         windowWidth = $(window).width() ;
 
+                    var dx = Math.round(Math.abs((e.pageX / $(window).width()) * 100));
+
+                    
+                    var movement = range * dx;
+                    console.log(dx,movement);
+                    container.css("background-position",(movement*-1)+"px" );
                     background.css("background-position", (strength1 / windowWidth * pageX * -1)+"px "+(strength1  / windowHeight * pageY * -1)+"px");
                     middlegorund.css("background-position", (strength2 / windowWidth * pageX * -1)+"px "+(strength2  / windowHeight * pageY * -1)+"px");
                     foreground.css("background-position", (strength3 / windowWidth * pageX * -1)+"px "+(strength3  / windowHeight * pageY * -1)+"px");
